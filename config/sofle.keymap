@@ -5,28 +5,6 @@
 #include <dt-bindings/zmk/rgb.h>
 
 / {
-    behaviors {
-        mmv {
-            acceleration-exponent = <1>;      // 1
-            time-to-max-speed-ms = <900>;    // 40
-            delay-ms = <0>;                   // 0
-        };
-
-        msc {
-            acceleration-exponent = <1>;      // 0
-            time-to-max-speed-ms = <400>;      // 500
-            delay-ms = <0>;                   //   10
-        };
-    };
-
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-        tap-ms = <30>;
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -52,8 +30,8 @@
 &rgb_ug RGB_TOG  &trans      &trans      &trans         &trans        &trans          &trans  &trans      &trans      &trans      &kp F13       &trans
             >;
 
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "Layer 1";
-            sensor-bindings = <&scroll_encoder>;
         };
 
         layer_2 {
@@ -65,8 +43,8 @@
 &trans  &trans        &trans          &trans        &trans        &trans          &trans  &trans       &trans    &trans      &trans     &trans
             >;
 
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "Layer 2";
-            sensor-bindings = <&scroll_encoder>;
         };
     };
 };
